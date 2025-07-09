@@ -19,7 +19,7 @@ function walkTheDog() {
 function doShoping() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const shopingDone = true;
+            const shopingDone = false;
             if (shopingDone) {
                 resolve('You have done shoping');
             } else {
@@ -44,15 +44,17 @@ function cleanTheCitchen() {
 
 
 
-doShoping().then(value => { console.log(value); return cleanTheCitchen() })
-    .then(value => { console.log(value); return doShoping()})
-    .then(value => { console.log(value); return true})
+cleanTheCitchen().then(value => { console.log(value); return doShoping() })
+    .then(value => { console.log(value); return doShoping() })
+    .then(value => { console.log(value); return true })
+    .catch(error => console.log(error)); //this catches rejected promises. If rejected promis is at the beginning of code, then following instructions will not be executed.
 
 
-    
+
 walkTheDog().then(value => { console.log(value); return walkTheDog() })
-    .then(value => { console.log(value); return walkTheDog()})
-    .then(value => { console.log(value); return true})
+    .then(value => { console.log(value); return walkTheDog() })
+    .then(value => { console.log(value); return true })
+    .catch(error => console.log(error));
 
 console.log('I am at the end')
 
