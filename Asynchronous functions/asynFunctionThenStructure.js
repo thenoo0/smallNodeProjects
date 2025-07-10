@@ -1,5 +1,5 @@
-// async -  makes function to return a promise
-// await - makes a function to wait for a promise
+// to wait for a function which returns a promise (wait until promise will be resolved)
+// we can use .then() structure
 
 
 function walkTheDog() {
